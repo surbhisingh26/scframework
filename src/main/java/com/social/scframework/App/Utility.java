@@ -2,6 +2,8 @@ package com.social.scframework.App;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,16 +25,7 @@ public class Utility {
 		Handlebars handlebars = new Handlebars(loader);
 		Template template = handlebars.compile(file);
 		if(hashMap==null){
-
 			hashMap  = new HashMap<String, Object>();}
-		if(uid==null){
-			hashMap.put("login",false);
-		}
-		else{
-
-			hashMap.put("login",true);
-		}
-
 		out.print(template.apply(hashMap));
 	}
 
@@ -67,5 +60,31 @@ public class Utility {
 		}
 		return uid;
 	}
-
+	public Object changeType(String type,String data){
+		Object changedData = null;
+		if(type.equals("int")){
+			changedData = Integer.parseInt(data);
+		}
+		if(type.equals("Float")){
+			changedData = Float.parseFloat(data);
+		}
+		if(type.equals("Double")){
+			changedData = Double.parseDouble(data);
+		}
+		if(type.equals("Boolean")){
+			changedData = Boolean.parseBoolean(data);
+		}
+		if(type.equals("Date")){
+			System.out.println("I am date");
+			SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy hh:mm:ss a");
+			try {
+				changedData = format.parse(data);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return changedData;
+	}
 }
