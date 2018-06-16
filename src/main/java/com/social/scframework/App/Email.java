@@ -19,7 +19,7 @@ public class Email {
 	Utility utility = new Utility();
 	public void send(String recieverName,String recieverEmail,String subject,String template,String templatePath,Map<String,Object> hashMap) throws ServletException, IOException{  
 		//Get properties object  
-		
+		System.out.println("send email ");
 		final String from = "surbhi.singh.ss05@gmail.com";
 		final String password="as192118020809";
 		Properties props = new Properties();    

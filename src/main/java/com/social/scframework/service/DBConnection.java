@@ -6,11 +6,17 @@ import com.mongodb.MongoClient;
 
 
 public class DBConnection { 
+	static  MongoClient mongoClient = null;
+	
+
 	public DB getDB(String dbName){  
 		try{  
-	
+
 			//---------- Connecting DataBase -------------------------//  
-			MongoClient mongoClient = new MongoClient( "localhost" , 27017 );  
+			System.out.println("mongoClient " + mongoClient);
+			if(mongoClient == null ) {
+				mongoClient = new MongoClient( "localhost" , 27017 ); ;
+			}
 			//---------- Creating DataBase ---------------------------//  
 			DB db = mongoClient.getDB(dbName);  
 			return db;
