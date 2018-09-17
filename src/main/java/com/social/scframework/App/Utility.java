@@ -52,9 +52,10 @@ public class Utility {
 		if(cookies !=null){
 			for(Cookie cookie : cookies){
 				System.out.println("cookies "+cookie);
-
+				System.out.println(cookie.getName());
 				if(cookie.getName().equals("uid")){
 					uid = cookie.getValue();
+					System.out.println("Id is " + uid);
 
 				}}
 		} else{
@@ -64,6 +65,9 @@ public class Utility {
 	}
 	public Object changeType(String type,String data){
 		Object changedData = null;
+		if(type.equals("String")){
+			changedData = data;
+		}
 		if(type.equals("int")){
 			changedData = Integer.parseInt(data);
 		}
