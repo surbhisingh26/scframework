@@ -34,14 +34,15 @@ public class Email {
 		
 		Session session = Session.getDefaultInstance(props,    
 				new javax.mail.Authenticator() {    
-			protected PasswordAuthentication getPasswordAuthentication() {    
+			protected PasswordAuthentication getPasswordAuthentication() {   
 				return new PasswordAuthentication(from,password);  
 			}    
 		});    
 		//compose message   
 		
 		try {    
-			MimeMessage message = new MimeMessage(session);    
+			MimeMessage message = new MimeMessage(session); 
+		
 			message.addRecipient(Message.RecipientType.TO,new InternetAddress(recieverEmail));    
 			message.setSubject(subject);   
 			System.out.println("sending.....");
